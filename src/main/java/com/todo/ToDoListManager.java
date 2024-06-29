@@ -55,6 +55,14 @@ public class ToDoListManager {
         }
     }
 
+    public void viewAllTasks() {
+        for (User user : users) {
+            System.out.println(user.getName() + "'s tasks:");
+            user.viewTasks();
+            System.out.println(); // Add a blank line for better readability
+        }
+    }
+
     public static void main(String[] args) {
         ToDoListManager manager = new ToDoListManager();
         Scanner scanner = new Scanner(System.in);
@@ -66,7 +74,8 @@ public class ToDoListManager {
             System.out.println("2. Add Task to User");
             System.out.println("3. Mark Task as Completed");
             System.out.println("4. View Tasks of User");
-            System.out.println("5. Exit");
+            System.out.println("5. View all Tasks");
+            System.out.println("6. Exit");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -99,6 +108,10 @@ public class ToDoListManager {
                     manager.viewTasksOfUser(userName);
                     break;
                 case 5:
+                    System.out.println("All users' tasks:");
+                    manager.viewAllTasks();
+                    break;
+                case 6:
                     exit = true;
                     System.out.println("Exiting...");
                     break;
